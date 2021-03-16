@@ -139,13 +139,15 @@ void SortTool::MaxHeapify(vector<int>& data, int root) {
     int target; // to be compared with its left and right children
     int l = (root + 1) * 2 - 1; // left child of root
     int r = (root + 1) * 2 + 1 - 1; // right child of root
-    if (data[root] < data[l] && l < heapSize) {
-        target = l;
-    } else if (data[root] < data[r] && r < heapSize) {
+    // determine left,right child and root, which are the largest, becomes next target
+    // compare two of them first, then compare the larger one with the third
+    // ***CANNOT swap compared order***
+    if (data[r] > data[root] && r < heapSize)
         target = r;
-    } else {
+    else
         target = root;
-    }
+    if (data[target] < data[l] && l < heapSize)
+        target = l;
     if (target != root) {
         int tmp = data[target];
         data[target] = data[root];
