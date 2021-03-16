@@ -1,0 +1,5 @@
+# from "make clean"
+*.o
+lib/*.a
+lib/*.o
+bin/*
