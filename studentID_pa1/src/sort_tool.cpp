@@ -3,6 +3,7 @@
 //  Author     [Yu-Hao Ho]
 //  Synopsis   [The implementation of the SortTool Class]
 //  Modify     [2021/02/26 Hsien-Chia Chen]
+//             [2021/03/16 Chih-Yuan Chuang (student id = r09921006)]
 // **************************************************************************
 
 #include "sort_tool.h"
@@ -81,7 +82,7 @@ void SortTool::MergeSortSubVector(vector<int>& data, int low, int high) {
     // TODO : Please complete MergeSortSubVector code here
     // Hint : recursively call itself
     //        Merge function is needed
-    // Reference: handout unit1b.pdf
+    // Reference: Handout unit1b.pdf
     int mid = (low + high) / 2;
     if (low < high) {
         MergeSortSubVector(data, low, mid);
@@ -94,7 +95,7 @@ void SortTool::MergeSortSubVector(vector<int>& data, int low, int high) {
 void SortTool::Merge(vector<int>& data, int low, int middle1, int middle2, int high) {
     // Function : Merge two sorted subvector
     // TODO : Please complete the function
-    // Reference: handout unit1b.pdf
+    // Reference: Handout unit1b.pdf
     vector<int> subLeft, subRight;
     for (int i = low; i <= middle1; i++)
         subLeft.push_back(data[i]);
@@ -134,6 +135,24 @@ void SortTool::HeapSort(vector<int>& data) {
 void SortTool::MaxHeapify(vector<int>& data, int root) {
     // Function : Make tree with given root be a max-heap if both right and left sub-tree are max-heap
     // TODO : Please complete max-heapify code here
+    // Reference: Textbook page 154
+    int target; // to be compared with its left and right children
+    int l = (root + 1) * 2 - 1; // left child of root
+    int r = (root + 1) * 2 + 1 - 1; // right child of root
+    if (data[root] < data[l] && l < data.size()) {
+        target = l;
+    } else if (data[root] < data[r] && r < data.size()) {
+        target = r;
+    } else {
+        target = root;
+    }
+    if (target != root) {
+        int tmp = data[target];
+        data[target] = data[root];
+        data[root] = tmp;
+        MaxHeapify(data, target);
+    }
+
 }
 
 //Build max heap
@@ -141,4 +160,9 @@ void SortTool::BuildMaxHeap(vector<int>& data) {
     heapSize = data.size(); // initialize heap size
     // Function : Make input data become a max-heap
     // TODO : Please complete BuildMaxHeap code here
+    // Reference: Textbook page 157
+    // level-ordered traversal
+    for (int i = ((heapSize + 1) / 2 - 1); i >= 0; i--) {
+        MaxHeapify(data, i);
+    }
 }
