@@ -121,11 +121,11 @@ void SortTool::HeapSort(vector<int>& data) {
     BuildMaxHeap(data);
     // 1. Swap data[0] which is max value and data[i] so that the max value will be in correct location
     // 2. Do max-heapify for data[0]
-	int tmp = 0;
+    int tmp = 0;
     for (int i = data.size() - 1; i >= 1; i--) {
-		tmp = data[i];
-		data[i] = data[0];
-		data[0] = tmp;
+        tmp = data[i];
+        data[i] = data[0];
+        data[0] = tmp;
         heapSize--;
         MaxHeapify(data,0);
     }
@@ -145,13 +145,13 @@ void SortTool::MaxHeapify(vector<int>& data, int root) {
     target = root;
     if (r < heapSize) { // ***NEED to test whether the index is within the vector size bound***
         if (data[r] > data[root]) {
-	    target = r;
-	}
+            target = r;
+        }
     }
     if (l < heapSize) {
-	if (data[l] > data[target]) {
+        if (data[l] > data[target]) {
             target = l;
-	}
+        }
     }
     if (target != root) {
         int tmp = data[target];
