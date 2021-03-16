@@ -139,9 +139,9 @@ void SortTool::MaxHeapify(vector<int>& data, int root) {
     int target; // to be compared with its left and right children
     int l = (root + 1) * 2 - 1; // left child of root
     int r = (root + 1) * 2 + 1 - 1; // right child of root
-    if (data[root] < data[l] && l < data.size()) {
+    if (data[root] < data[l] && l < heapSize) {
         target = l;
-    } else if (data[root] < data[r] && r < data.size()) {
+    } else if (data[root] < data[r] && r < heapSize) {
         target = r;
     } else {
         target = root;
