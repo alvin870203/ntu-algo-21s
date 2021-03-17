@@ -1,0 +1,44 @@
+This is README file for Algorithm PA#1
+Author: 莊志淵 r09921006
+Date: 2021/03/17
+=====
+SYNOPSIS:
+
+NTU_sort -[IS|MS|QS|HS] <input_file_name> <output_file_name>
+
+This program supports four different sorting methods:
+insertion sort, merge sort, quick sort and heap sort.
+=====
+DIRECTORY:
+
+├── bin               // executable binary
+│   └── NTU_sort
+├── doc               // report
+│   └── report.pdf
+├── lib               // library file
+│   ├── libtm_usage.a
+│   ├── tm_usage.cpp
+│   └── tm_usage.h
+├── makefile
+├── README
+└── src               // all the source codes
+    ├── main.cpp
+    ├── sort_tool.cpp
+    └── sort_tool.h
+======
+HOW TO CIMPILE:
+
+Then compile the codes, simply follow the following steps
+	make
+======
+HOW TO RUN:
+
+	cd bin/
+	./bin/NTU_sort -[IS|MS|QS|HS] <input_file_name> <output_file_name>
+	For example,
+	under r09921006_pa1/
+	./bin/NTU_sort -MS inputs/1000.case1.in outputs/1000.case1.out
+======
+
+OTHER NOTICE:
+No
