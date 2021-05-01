@@ -64,7 +64,7 @@ def printChord(chosen_chord, i, j, file):
 
 if __name__ == '__main__':
     file_name = '100000'
-    N, C = readInputFile("inputs\\" + file_name + ".in")
+    N, C = readInputFile("inputs/" + file_name + ".in")
     # print(f'N = {pd.DataFrame(N)}')
     # print(f'C = {pd.DataFrame(C)}')
     print(f'N = {N}')
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     print(f'chosen_chord = \n{pd.DataFrame(chosen_chord).astype(pd.Int32Dtype())}')
     print(f'Ans. = {M[0][2*N-1]}')
 
-    with open("outputs\\my" + file_name + ".out", 'w') as f:
+    with open("outputs/my" + file_name + ".out", 'w') as f:
         f.write(f'{M[0][2*N-1]}\n')
         printChord(chosen_chord, 0, 2*N-1, f)
     print(f'recursion_times = {recursion_times}')
