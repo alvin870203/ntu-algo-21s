@@ -40,6 +40,7 @@ int main(int argc, char* argv[]) {
 
     MpsTool NTUMpsToll(num_endpoints);
     NTUMpsToll.MAXIMUM_PLANAR_SUBSET(C);
+    NTUMpsToll.WRITE_ANS();
 
     // for (int i = 0; i < num_endpoints; i++) {
     //     cout << C[i] << endl;

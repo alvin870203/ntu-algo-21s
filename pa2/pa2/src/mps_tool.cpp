@@ -13,7 +13,7 @@
 MpsTool::MpsTool(int num_endpoints)
     :   M(num_endpoints + 1, vector<int>(num_endpoints + 1, -1)),
         chosen_chord(num_endpoints + 1, vector<int>(num_endpoints + 1, -1)),
-        optimal_chord(num_endpoints + 1, vector<int>(2, -1)),
+        // optimal_chord(num_endpoints + 1, vector<int>(2, -1)),
         N(num_endpoints / 2) {
     cout << "Consturct MpsTool successfuly" << endl;
     // cout << M.size() << endl << N << endl;
@@ -44,7 +44,7 @@ void MpsTool::MAXIMUM_PLANAR_SUBSET(vector<int>& C) {
                 M[i][j] = M[i + 1][j - 1] + 1;
                 chosen_chord[i][j] = k;
                 // cout << "case2" << endl;
-            } else {
+            } else {  // case3
                 // cout << "case3" << endl;
                 if (M[i][j - 1] >= M[i][k - 1] + 1 + M[k + 1][j - 1]) {
                     M[i][j] = M[i][j - 1];
@@ -56,5 +56,36 @@ void MpsTool::MAXIMUM_PLANAR_SUBSET(vector<int>& C) {
         }
     }
 
-    cout << M[0][2*N-1] << endl << chosen_chord[0][2*N-1];
+    // cout << M[0][2*N-1] << endl << chosen_chord[0][2*N-1];
+}
+
+// consturct optimal chord
+void MpsTool::PRINT_CHORD(int i, int j) {
+    
+    // boundary condition
+    if (i >= j) {
+        return;
+    }
+
+    // push optimal chord into optimal_chord
+    for (int j_current = j; j_current > i; j_current--) {
+        int k_current = chosen_chord[i][j_current];
+        if (k_current != -1) {
+            PRINT_CHORD(i, k_current - 1);
+            vector<int> current_chord(2, -1);
+            current_chord[0] = k_current;
+            current_chord[1] = j_current;
+            optimal_chord.push_back(current_chord);
+            PRINT_CHORD(k_current + 1, j_current - 1);
+            break;
+        }
+    }
+
+    return;
+}
+
+
+void MpsTool::WRITE_ANS(){//fstream& fout) {
+    PRINT_CHORD(0, 2 * N - 1);
+    cout << optimal_chord.size() << endl;
 }
