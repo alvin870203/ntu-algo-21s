@@ -13,15 +13,16 @@ using namespace std;
 
 class MpsTool {
     public:
-                MpsTool();  // Constructor
-        void    MAXIMUM_PLANAR_SUBSET(vector<int>&, int);  // calculate maximum planar subset
-        void    WRITE_ANS(fstream&);  // write answer to output file
+                MpsTool(int);  // Constructor
+        void    MAXIMUM_PLANAR_SUBSET(vector<int>&);  // calculate maximum planar subset
+        // void    WRITE_ANS(fstream&);  // write answer to output file
         
     private:
+        int                     N;  // number of chords, N = num_endpoints / 2
         vector<vector<int>>     M;  // table to record maximum planar subset
         vector<vector<int>>     chosen_chord;  // table to record k of optimal chord jk
         vector<vector<int>>     optimal_chord;  // vector to store optimal chords for M[0, 2N-1]
-        void    PRINT_CHORD(int, int);  // consturct optimal chord
+        // void    PRINT_CHORD(int, int);  // consturct optimal chord
 };
 
 #endif

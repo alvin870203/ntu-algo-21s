@@ -7,7 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "../lib/tm_usage.h"  // record running time
+// #include "../lib/tm_usage.h"  // record running time
 #include "mps_tool.h"  // solve Maximum Planar Subset
 
 using namespace std;
@@ -38,6 +38,9 @@ int main(int argc, char* argv[]) {
         C[b] = a;
     }
 
+    MpsTool NTUMpsToll(num_endpoints);
+    NTUMpsToll.MAXIMUM_PLANAR_SUBSET(C);
+
     // for (int i = 0; i < num_endpoints; i++) {
     //     cout << C[i] << endl;
     // }
@@ -50,4 +53,5 @@ int main(int argc, char* argv[]) {
     
     fin.close();
     // fout.close();
+    return 0;
 }
