@@ -15,7 +15,7 @@ MpsTool::MpsTool(int num_endpoints)
         chosen_chord(num_endpoints + 1, vector<int>(num_endpoints + 1, -1)),
         // optimal_chord(num_endpoints + 1, vector<int>(2, -1)),
         N(num_endpoints / 2) {
-    cout << "Consturct MpsTool successfuly" << endl;
+    // cout << "Consturct MpsTool successfuly" << endl;
     // cout << M.size() << endl << N << endl;
 }
 
@@ -85,7 +85,20 @@ void MpsTool::PRINT_CHORD(int i, int j) {
 }
 
 
-void MpsTool::WRITE_ANS(){//fstream& fout) {
+void MpsTool::WRITE_ANS(fstream& fout) {
+    
+    // construct optimal solution
     PRINT_CHORD(0, 2 * N - 1);
-    cout << optimal_chord.size() << endl;
+
+    // writ optimal solution to output file
+    int mps = optimal_chord.size();
+    fout << mps << endl;
+    for (int i = 0; i < mps; i++) {
+        fout << optimal_chord[i][0] << " " << optimal_chord[i][1] << endl;
+    }
+
+    // cout << optimal_chord.size() << endl;
+    // for (int i = 0; i < optimal_chord.size(); i++) {
+    //     cout << optimal_chord[i][0] << " " << optimal_chord[i][1] << endl;
+    // }
 }

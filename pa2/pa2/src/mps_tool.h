@@ -15,7 +15,7 @@ class MpsTool {
     public:
                 MpsTool(int);  // Constructor
         void    MAXIMUM_PLANAR_SUBSET(vector<int>&);  // calculate maximum planar subset
-        void    WRITE_ANS();//fstream&);  // write answer to output file
+        void    WRITE_ANS(fstream&);  // write answer to output file
         
     private:
         int                     N;  // number of chords, N = num_endpoints / 2

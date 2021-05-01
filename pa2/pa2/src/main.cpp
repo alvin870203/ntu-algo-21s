@@ -26,8 +26,8 @@ int main(int argc, char* argv[]) {
 
     // read the input file
     fstream fin(argv[1]);  // input_file
-    // fstream fout;  // output_file
-    // fout.open(argv[2], ios::out);
+    fstream fout;  // output_file
+    fout.open(argv[2], ios::out);
     int num_endpoints;  // number of endpoints = 2N
     fin >> num_endpoints;
     vector<int> C(num_endpoints, -1);  // chords pair. For chord ab, C[a] = b, C[b] = a
@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
 
     MpsTool NTUMpsToll(num_endpoints);
     NTUMpsToll.MAXIMUM_PLANAR_SUBSET(C);
-    NTUMpsToll.WRITE_ANS();
+    NTUMpsToll.WRITE_ANS(fout);
 
     // for (int i = 0; i < num_endpoints; i++) {
     //     cout << C[i] << endl;
@@ -53,6 +53,6 @@ int main(int argc, char* argv[]) {
     // MpsTool NTUMpsTool;
     
     fin.close();
-    // fout.close();
+    fout.close();
     return 0;
 }
