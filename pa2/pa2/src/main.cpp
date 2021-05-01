@@ -7,8 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-// #include "../lib/tm_usage.h"  // record running time
-// #include "mps_tool.h"  // solve Maximum Planar Subset
+#include "../lib/tm_usage.h"  // record running time
+#include "mps_tool.h"  // solve Maximum Planar Subset
 
 using namespace std;
 
