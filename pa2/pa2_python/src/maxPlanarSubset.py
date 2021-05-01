@@ -9,9 +9,9 @@ def MAXIMUM_PLANAR_SUBSET(C, N):
     for i in range(1, 2*N, 1):
         M[i][i-1] = 0
     # print(M)
-    for l in range(1, 2*N, 1):
-        for i in range(0, 2*N-l, 1):
-            j = i + l
+    for length in range(1, 2*N, 1):
+        for i in range(0, 2*N-length, 1):
+            j = i + length
             k = C[j][1]
             # print(i, j, k)
             if k < i or k > j:
