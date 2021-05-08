@@ -13,10 +13,10 @@ all	: bin/mps
 	@echo -n ""
 
 # optimized version
-bin/mps		   : mps_tool_opt.o main_opt.o lib
-			$(CC) $(OPTFLAGS) mps_tool_opt.o main_opt.o -ltm_usage -Llib -o bin/mps
-main_opt.o	   : src/main.cpp lib/tm_usage.h src/mps_tool.h
-			$(CC) $(CFLAGS) $< -Ilib -o $@
+bin/mps		   : mps_tool_opt.o main_opt.o src
+			$(CC) $(OPTFLAGS) mps_tool_opt.o main_opt.o -ltm_usage -Lsrc -o bin/mps
+main_opt.o	   : src/main.cpp src/tm_usage.h src/mps_tool.h
+			$(CC) $(CFLAGS) $< -Isrc -o $@
 mps_tool_opt.o : src/mps_tool.cpp src/mps_tool.h
 			$(CC) $(CFLAGS) $(OPTFLAGS) $< -o $@
 
@@ -24,20 +24,20 @@ mps_tool_opt.o : src/mps_tool.cpp src/mps_tool.h
 dpg : bin/mps_dbg
 	@echo -n ""
 
-bin/mps_dbg	   : mps_tool_dbg.o main_dbg.o lib
-			$(CC) $(DBGFLAGS) mps_tool_dbg.o main_dbg.o -ltm_usage -Llib -o bin/mps_dbg
-main_dbg.o	   : src/main.cpp lib/tm_usage.h src/mps_tool.h
-			$(CC) $(CFLAGS) $< -Ilib -o $@
+bin/mps_dbg	   : mps_tool_dbg.o main_dbg.o src
+			$(CC) $(DBGFLAGS) mps_tool_dbg.o main_dbg.o -ltm_usage -Lsrc -o bin/mps_dbg
+main_dbg.o	   : src/main.cpp src/tm_usage.h src/mps_tool.h
+			$(CC) $(CFLAGS) $< -Isrc -o $@
 mps_tool_dbg.o : src/mps_tool.cpp src/mps_tool.h
 			$(CC) $(CFLAGS) $(DBGFLAGS) $< -o $@
 
-lib: lib/libtm_usage.a
+src: src/srctm_usage.a
 
-lib/libtm_usage.a: tm_usage.o
+src/srctm_usage.a: tm_usage.o
 	$(AR) $(ARFLAGS) $@ $<
-tm_usage.o: lib/tm_usage.cpp lib/tm_usage.h
+tm_usage.o: src/tm_usage.cpp src/tm_usage.h
 	$(CC) $(CFLAGS) $<
 
 # clean all the .o and executable files
 clean:
-		rm -rf *.o lib/*.a lib/*.o bin/*
+		rm -rf *.o src/*.a src/*.o bin/*
