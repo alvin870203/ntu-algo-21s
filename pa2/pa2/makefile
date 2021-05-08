@@ -31,9 +31,9 @@ main_dbg.o	   : src/main.cpp src/tm_usage.h src/mps_tool.h
 mps_tool_dbg.o : src/mps_tool.cpp src/mps_tool.h
 			$(CC) $(CFLAGS) $(DBGFLAGS) $< -o $@
 
-src: src/srctm_usage.a
+src: src/libtm_usage.a
 
-src/srctm_usage.a: tm_usage.o
+src/libtm_usage.a: tm_usage.o
 	$(AR) $(ARFLAGS) $@ $<
 tm_usage.o: src/tm_usage.cpp src/tm_usage.h
 	$(CC) $(CFLAGS) $<
