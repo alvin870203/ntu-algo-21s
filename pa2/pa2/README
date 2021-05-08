@@ -1,0 +1,44 @@
+This is README file for Algorithm PA#2
+Author: 莊志淵 r09921006
+Date: 2021/05/08
+=====
+SYNOPSIS:
+
+./mps <input_file_name> <output_file_name>
+
+This program solves Maximum Planar Subset.
+=====
+DIRECTORY:
+
+├── bin               // executable binary
+│   └── mps
+├── doc               // report
+│   └── report.pdf
+├── lib               // library file
+│   ├── libtm_usage.a
+│   ├── tm_usage.cpp
+│   └── tm_usage.h
+├── makefile
+├── README
+└── src               // all the source codes
+    ├── main.cpp
+    ├── mps_tool.cpp
+    └── mps_tool.h
+
+======
+HOW TO CIMPILE:
+
+under r09921006_pa2/
+compile the codes, simply follow the following steps
+		make
+======
+HOW TO RUN:
+
+	./bin/mps inputs/<input_file_name> outputs/<output_file_name>
+	For example,
+	under r09921006_pa2/
+	./bin/mps inputs/12.in outputs/12.out
+======
+
+OTHER NOTICE:
+No
