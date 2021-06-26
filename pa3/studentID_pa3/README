@@ -1,0 +1,42 @@
+This is README file for Algorithm PA#2
+Author: 莊志淵 r09921006
+Date: 2021/06/27
+=====
+SYNOPSIS:
+
+./cb <input_file_name> <output_file_name>
+
+This program solves Cycle Breaking problem.
+=====
+DIRECTORY:
+
+r09921006_pa2/
+├── bin/            // executable binary
+│   └── cb
+├── doc/            // report
+│   └── report.pdf
+├── makefile
+├── README
+├── src/            // all the source codes and library files
+│   └── main.cpp
+└── outputs/        // empty folder for output files 
+
+======
+HOW TO CIMPILE:
+
+under r09921006_pa3/
+compile the codes, simply follow the following steps
+		make
+======
+HOW TO RUN:
+
+	./bin/cb inputs/<input_file_name> outputs/<output_file_name>
+	For example,
+	under r09921006_pa3/
+	./bin/cb inputs/1.in outputs/1.out
+======
+
+OTHER NOTICE:
+
+Reference:
+    Eades, Peter, Xuemin Lin, and William F. Smyth, "A fast and effective heuristic for the feedback arc set problem," Information Processing Letters, 1993, 47.6: 319-323.
