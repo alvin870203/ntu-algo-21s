@@ -10,7 +10,7 @@ all	: bin/cb
 
 # optimized version
 bin/cb		   : main_opt.o src
-			$(CC) $(OPTFLAGS) main_opt.o
+			$(CC) $(OPTFLAGS) main_opt.o -o bin/cb
 main_opt.o	   : src/main.cpp
 			$(CC) $(CFLAGS) $< -Isrc -o $@
 
