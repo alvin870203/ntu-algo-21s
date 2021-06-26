@@ -12,7 +12,6 @@
 #include <algorithm>
 #include <queue>
 // #include "tm_usage.h"  // record running time
-// #include "cb_tool.h"  // solve Cycle Breaking problem
 
 using namespace std;
 
@@ -133,7 +132,6 @@ int main(int argc, char* argv[]) {
         {
             case 'u':
                 edges.push_back(E(i, j, w));
-                cout << "un-directed" << endl;
                 break;
             case 'd':
                 deg_pos[i] += 1;
@@ -142,7 +140,6 @@ int main(int argc, char* argv[]) {
                 w_neg[j] += w;
                 G[i].push_back(pair<int, int>(j, w));
                 G_T[j].push_back(pair<int, int>(i, w));
-                cout << "directed" << endl;
                 break;
             default:
                 cout << "wrong dir_type, should be <u or d>" << endl;
@@ -180,8 +177,6 @@ int main(int argc, char* argv[]) {
                 }
                 idx++;
             }
-            cout << "Kruskal alg" << endl;
-            // cout << w_ans << endl;;
             break;
         }
         case 'd':  // use GA algorithm
@@ -190,7 +185,6 @@ int main(int argc, char* argv[]) {
             // vector<int> s;
             vector<int> s1;
             vector<int> s2;
-            cout << "s2 origin" << s2.size() << endl;
             
             queue<int> sinks;  // deg_pos = 0
             queue<int> sources;  // deg_neg = 0
@@ -202,7 +196,6 @@ int main(int argc, char* argv[]) {
                 if (deg_neg[idx - 1] == 0) {
                     remained[idx - 1] = false;
                     sources.push(idx - 1);
-                    cout << idx - 1 << endl;
                 }
                 if (deg_pos[idx - 1] == 0) {
                     remained[idx - 1] = false;
@@ -210,15 +203,11 @@ int main(int argc, char* argv[]) {
                 }
                 idx++;
             }
-            cout << sources.size() << endl;
-            // cout << "line211" << endl;
             while (used_num <= n) {
-                cout << "line213 " << used_num << endl;
                 // remove source from G
                 while (sources.empty() == false) {
                     int node = sources.front();
                     sources.pop();
-                    cout << node << endl;
                     s1.push_back(node);
                     used_num++;
                     int idx_v = 0;
@@ -230,21 +219,17 @@ int main(int argc, char* argv[]) {
                             w_neg[v] -= G[node][idx_v].second;
                             if (deg_neg[v] == 0) {
                                 remained[v] = false;
-                                cout << "_" << v << endl;
                                 sources.push(v);
                             }
                         }
                         idx_v++;
                     }
                 }
-                cout << "line 240 s2_size = " << s2.size() << endl;
 
-                cout << "line235" << endl;
                 // remove sink from G
                 while (sinks.empty() == false) {
                     int node = sinks.front();
                     sinks.pop();
-                    cout << "s2 " << node << endl;
                     s2.push_back(node);
                     used_num++;
                     int idx_v = 0;
@@ -261,11 +246,8 @@ int main(int argc, char* argv[]) {
                         idx_v++;
                     }
                 }
-                cout << "line 264 s2_size = " << s2.size() << endl;
 
-                cout << "line256" << endl;
                 if (used_num >= n) {
-                    cout << "break used num " << used_num << endl;
                     break;
                 }
 
@@ -288,7 +270,6 @@ int main(int argc, char* argv[]) {
                 }
                 remained[node_max] = false;
                 s1.push_back(node_max);
-                cout << node_max << endl;
                 used_num++;
                 int idx_v = 0;
                 while (idx_v < G[node_max].size()) {
@@ -316,34 +297,26 @@ int main(int argc, char* argv[]) {
                     }
                     idx_v++;
                 }
-                cout << "line303" << endl;
             }
-            cout << "ussed num " << used_num << endl;
             
             vector<int> s(s1);
             int s2_size = s2.size();
-            cout << "s2_size = " << s2.size() << endl;
             while (s2_size >= 1) {
                 s.push_back(s2[s2_size - 1]);
                 s2_size--;
             }
             
-            cout << "line315" << endl;
             vector<int> node2s(n, -1);
             idx = 1;
             while (idx <= n) {
-                cout << "line328 " << s[idx - 1] << " " << n << endl;
                 node2s[s[idx - 1]] = idx - 1;
                 idx++;
             }
-            cout << "line322" << endl;
             idx = 1;
             while (idx <= n) {
-                cout << "line325" << endl;
                 int idx_j = 1;
                 while (idx_j <= G[idx - 1].size()) {
                     if (node2s[idx - 1] > node2s[G[idx - 1][idx_j - 1].first]) {
-                        cout << "line329" << endl;
                         e_ans.push_back(E(idx - 1, G[idx - 1][idx_j - 1].first, G[idx - 1][idx_j - 1].second));
                         w_ans += G[idx - 1][idx_j - 1].second;
                     }
@@ -351,10 +324,7 @@ int main(int argc, char* argv[]) {
                 }
                 idx++;
             }
-            cout << "GR alg" << endl;
-            for (int i = 0; i < s.size(); i++) {
-                cout << s[i] << endl;
-            }
+
             break;
         }
         default:
