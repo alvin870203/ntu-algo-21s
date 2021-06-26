@@ -5,7 +5,7 @@ CFLAGS = -c
 # -O3 option is for optimized version
 OPTFLAGS = -O3
 
-all	: bin/cp
+all	: bin/cb
 	@echo -n ""
 
 # optimized version
@@ -16,4 +16,4 @@ main_opt.o	   : src/main.cpp
 
 # clean all the .o and executable files
 clean:
-		rm -rf *.o src/*.a src/*.o bin/*
+		rm -rf *.o src/*.a src/*.o bin/* a.out
